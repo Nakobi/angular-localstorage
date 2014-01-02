@@ -1,0 +1,26 @@
+{
+  "name": "angular-localstorage",
+  "version": "0.0.0",
+  "authors": [
+    "Bhagavan Nagaraju <bhagavan@riptideio.com>"
+  ],
+  "description": "A promise based API to interact with localStorage and an abstraction over chrome.storage.local",
+  "main": "angular-localstorage.js",
+  "dependencies": {
+    "angular": "~1.2.5"
+  },
+  "keywords": [
+    "localstorage",
+    "chrome.storage.local",
+    "angular",
+    "service"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
