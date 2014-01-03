@@ -1,7 +1,7 @@
 describe('test', function() {
   var $httpBackend, provide;
 
-  beforeEach(module('jigijigi.angular.localstorage'));
+  beforeEach(module('jigijigi.angular.storage'));
   
   /** Basic unit test **/
 

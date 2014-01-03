@@ -1,54 +1,4 @@
 /**
- * @module jigijigi.angular.storage.ChromeLocalStorage
- */
-
-angular.module('jigijigi.angular.storage.ChromeLocalStorage', [])
-
-.constant('ERROR', {
-  ITEM_NOT_FOUND: 'Item not found'
-})
-
-.factory('ChromeLocalStorage', ['$window', '$q', function($window, $q) {
-  var _localStorage = $window.chrome.storage.local;
-  return {
-    get: function(/* String|Array|Object */ keys) {
-      var deferred = $q.defer();
-
-      var items = _localStorage.get(keys, function(item) {
-        if(!item || $window.chrome.runtime.lastError) {
-          console.error($window.chrome.runtime.lastError);
-          deferred.reject(ERROR.ITEM_NOT_FOUND);
-        } else {
-          // TODO: deserialize item
-          deferred.resolve(items);
-        }
-      });
-
-      return deferred.promise();
-    },
-
-    set: function(/* Object */ items) {
-
-    },
-
-    remove: function(/* String|Array */ keys) {
-
-    },
-
-    clear: function() {
-      var deferred = $q.defer();
-      _localStorage.clear(function() {
-        if($window.chrome.runtime.lastError) {
-          deferred.reject($window.chrome.runtime.lastError);
-        } else {
-          deferred.resolve();
-        }
-      });
-
-      return deferred.promise;
-    }
-  };
-}]);;/**
  * @module jigijigi.angular.storage.GenericLocalStorage
  */
 
@@ -132,35 +82,4 @@ function($window, $q, ERROR) {
       return deferred.promise;
     }
   };
-}]);;/**
- * @module jigijigi.angular.localstorage
- */
-
-angular.module('jigijigi.angular.storage', [
-  'jigijigi.angular.storage.GenericLocalStorage',
-  'jigijigi.angular.storage.ChromeLocalStorage'
-])
-
-.constant('STORAGE', {
-  'GENERIC': 'GenericLocalStorage',
-  'CHROME': 'ChromeLocalStorage'
-})
-
-.factory('LocalStorage', [
-  '$window', 
-  '$q', 
-  '$injector',
-  'STORAGE',
-function($window, $q, $injector, STORAGE) {
-  var storage = null;
-  
-  if($window.chrome && $window.chrome.app.isInstalled) {
-    storage = $injector.get(STORAGE.CHROME);
-  } else {
-    storage = $injector.get(STORAGE.GENERIC);
-  }
-
-  return storage;
-}])
-
-;
+}]);

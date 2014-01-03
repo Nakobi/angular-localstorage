@@ -40,11 +40,13 @@ module.exports = function(grunt) {
       files: ['Gruntfile.js', 'src/**/*.js', 'tests/**/*.js'],
       options: {
         // options here to override JSHint defaults
-        globals: {
-          console: true,
-          module: true,
-          document: true
-        }
+        curly: true,
+        immed: true,
+        newcap: true,
+        noarg: true,
+        sub: true,
+        boss: true,
+        eqnull: true
       }
     }
   });
