@@ -7,8 +7,8 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: ['<%= pkg.name %>.js'],
-        dest: '<%= pkg.name %>.concat.js'
+        src: ['src/**/*.js'],
+        dest: '<%= pkg.name %>.js'
       }
     },
     uglify: {
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
     },
     
     jshint: {
-      files: ['Gruntfile.js', '<%= pkg.name %>', 'tests/**/*.js'],
+      files: ['Gruntfile.js', 'src/**/*.js', 'tests/**/*.js'],
       options: {
         // options here to override JSHint defaults
         globals: {
