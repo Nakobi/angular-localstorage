@@ -1,30 +1,31 @@
 module.exports = function(config) {
   config.set({
     // base path, that will be used to resolve files and exclude
-    basePath: '../..',
+    basePath: '.',
 
-    frameworks: ['jasmine', 'commonjs'],
+    frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
     files: [
-      'client/*.js',
-      'test/client/*.js'
+      'bower_components/angular/angular.js',
+      'bower_components/angular-mocks/angular-mocks.js',
+      'angular-localstorage.js',
+      'tests/*.js'
     ],
 
     // list of files to exclude
     exclude: [
-      'client/main.js'
+
     ],
 
     preprocessors: {
-      'client/*.js': ['commonjs'],
-      'test/client/*.js': ['commonjs']
+      
     },
 
     // use dots reporter, as travis terminal does not support escaping sequences
     // possible values: 'dots', 'progress'
     // CLI --reporters progress
-    reporters: ['progress', 'junit'],
+    reporters: ['dots'],
 
     junitReporter: {
       // will be resolved to basePath (in the same way as files/exclude patterns)
@@ -33,7 +34,10 @@ module.exports = function(config) {
 
     // web server port
     // CLI --port 9876
-    port: 9876,
+    //port: 9876,
+    runnerPort: 9101,
+        background: true,
+        port: 9877,
 
     // enable / disable colors in the output (reporters and logs)
     // CLI --colors --no-colors
@@ -65,7 +69,7 @@ module.exports = function(config) {
 
     // Auto run tests on start (when browsers are captured) and exit
     // CLI --single-run --no-single-run
-    singleRun: false,
+    //singleRun: true,
 
     // report which specs are slower than 500ms
     // CLI --report-slower-than 500
@@ -74,9 +78,7 @@ module.exports = function(config) {
     plugins: [
       'karma-jasmine',
       'karma-chrome-launcher',
-      'karma-firefox-launcher',
-      'karma-junit-reporter',
-      'karma-commonjs'
+      'karma-firefox-launcher'
     ]
   });
 };
