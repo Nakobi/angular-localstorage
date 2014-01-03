@@ -1,3 +1,4 @@
+![status](https://api.travis-ci.org/bhagn/angular-localstorage.png)
 angular-localstorage
 ====================
 
